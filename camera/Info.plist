@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleIdentifier</key>
+	<string></string>
+	<key>CMIOExtension</key>
+	<dict>
+		<key>CMIOExtensionMachServiceName</key>
+		<string>$(TeamIdentifierPrefix)$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	</dict>
+	<key>NSSystemExtensionUsageDescription</key>
+	<string>MmHmm needs your permission to install a virtual camera driver to use the MmHmm with other applications</string>
+	<key>OSBundleUsageDescriptionKey</key>
+	<string>This one?</string>
+</dict>
+</plist>

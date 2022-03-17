@@ -7,23 +7,64 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D0C47FB27E3F5F0002FFCAA /* CameraPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0C47FA27E3F5F0002FFCAA /* CameraPreview.swift */; };
 		4D9B53F827D15E300041DFF3 /* CameraTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9B53F727D15E300041DFF3 /* CameraTestApp.swift */; };
 		4D9B53FA27D15E300041DFF3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9B53F927D15E300041DFF3 /* ContentView.swift */; };
 		4D9B53FC27D15E310041DFF3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D9B53FB27D15E310041DFF3 /* Assets.xcassets */; };
 		4D9B53FF27D15E310041DFF3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D9B53FE27D15E310041DFF3 /* Preview Assets.xcassets */; };
+		4D9B540D27D15ED60041DFF3 /* cameraProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9B540C27D15ED60041DFF3 /* cameraProvider.swift */; };
+		4D9B540F27D15ED60041DFF3 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9B540E27D15ED60041DFF3 /* main.swift */; };
+		4D9B541427D15ED60041DFF3 /* app.mmhmm.CameraTest.camera.systemextension in Embed System Extensions */ = {isa = PBXBuildFile; fileRef = 4D9B540A27D15ED60041DFF3 /* app.mmhmm.CameraTest.camera.systemextension */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		4D9B541227D15ED60041DFF3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4D9B53EC27D15E300041DFF3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4D9B540927D15ED60041DFF3;
+			remoteInfo = camera;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		4D9B541827D15ED60041DFF3 /* Embed System Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(SYSTEM_EXTENSIONS_FOLDER_PATH)";
+			dstSubfolderSpec = 16;
+			files = (
+				4D9B541427D15ED60041DFF3 /* app.mmhmm.CameraTest.camera.systemextension in Embed System Extensions */,
+			);
+			name = "Embed System Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		4D0C47FA27E3F5F0002FFCAA /* CameraPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreview.swift; sourceTree = "<group>"; };
 		4D9B53F427D15E300041DFF3 /* CameraTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CameraTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D9B53F727D15E300041DFF3 /* CameraTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraTestApp.swift; sourceTree = "<group>"; };
 		4D9B53F927D15E300041DFF3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4D9B53FB27D15E310041DFF3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4D9B53FE27D15E310041DFF3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4D9B540027D15E310041DFF3 /* CameraTest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CameraTest.entitlements; sourceTree = "<group>"; };
+		4D9B540A27D15ED60041DFF3 /* app.mmhmm.CameraTest.camera.systemextension */ = {isa = PBXFileReference; explicitFileType = "wrapper.system-extension"; includeInIndex = 0; path = app.mmhmm.CameraTest.camera.systemextension; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D9B540C27D15ED60041DFF3 /* cameraProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cameraProvider.swift; sourceTree = "<group>"; };
+		4D9B540E27D15ED60041DFF3 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		4D9B541027D15ED60041DFF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4D9B541127D15ED60041DFF3 /* camera.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = camera.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		4D9B53F127D15E300041DFF3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4D9B540727D15ED60041DFF3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -37,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				4D9B53F627D15E300041DFF3 /* CameraTest */,
+				4D9B540B27D15ED60041DFF3 /* camera */,
 				4D9B53F527D15E300041DFF3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -45,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				4D9B53F427D15E300041DFF3 /* CameraTest.app */,
+				4D9B540A27D15ED60041DFF3 /* app.mmhmm.CameraTest.camera.systemextension */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -57,6 +100,7 @@
 				4D9B53FB27D15E310041DFF3 /* Assets.xcassets */,
 				4D9B540027D15E310041DFF3 /* CameraTest.entitlements */,
 				4D9B53FD27D15E310041DFF3 /* Preview Content */,
+				4D0C47FA27E3F5F0002FFCAA /* CameraPreview.swift */,
 			);
 			path = CameraTest;
 			sourceTree = "<group>";
@@ -69,6 +113,17 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		4D9B540B27D15ED60041DFF3 /* camera */ = {
+			isa = PBXGroup;
+			children = (
+				4D9B540C27D15ED60041DFF3 /* cameraProvider.swift */,
+				4D9B540E27D15ED60041DFF3 /* main.swift */,
+				4D9B541027D15ED60041DFF3 /* Info.plist */,
+				4D9B541127D15ED60041DFF3 /* camera.entitlements */,
+			);
+			path = camera;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -79,15 +134,34 @@
 				4D9B53F027D15E300041DFF3 /* Sources */,
 				4D9B53F127D15E300041DFF3 /* Frameworks */,
 				4D9B53F227D15E300041DFF3 /* Resources */,
+				4D9B541827D15ED60041DFF3 /* Embed System Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				4D9B541327D15ED60041DFF3 /* PBXTargetDependency */,
 			);
 			name = CameraTest;
 			productName = CameraTest;
 			productReference = 4D9B53F427D15E300041DFF3 /* CameraTest.app */;
 			productType = "com.apple.product-type.application";
+		};
+		4D9B540927D15ED60041DFF3 /* camera */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4D9B541527D15ED60041DFF3 /* Build configuration list for PBXNativeTarget "camera" */;
+			buildPhases = (
+				4D9B540627D15ED60041DFF3 /* Sources */,
+				4D9B540727D15ED60041DFF3 /* Frameworks */,
+				4D9B540827D15ED60041DFF3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = camera;
+			productName = camera;
+			productReference = 4D9B540A27D15ED60041DFF3 /* app.mmhmm.CameraTest.camera.systemextension */;
+			productType = "com.apple.product-type.system-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -100,6 +174,9 @@
 				LastUpgradeCheck = 1330;
 				TargetAttributes = {
 					4D9B53F327D15E300041DFF3 = {
+						CreatedOnToolsVersion = 13.3;
+					};
+					4D9B540927D15ED60041DFF3 = {
 						CreatedOnToolsVersion = 13.3;
 					};
 				};
@@ -118,6 +195,7 @@
 			projectRoot = "";
 			targets = (
 				4D9B53F327D15E300041DFF3 /* CameraTest */,
+				4D9B540927D15ED60041DFF3 /* camera */,
 			);
 		};
 /* End PBXProject section */
@@ -132,6 +210,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4D9B540827D15ED60041DFF3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -139,12 +224,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D0C47FB27E3F5F0002FFCAA /* CameraPreview.swift in Sources */,
 				4D9B53FA27D15E300041DFF3 /* ContentView.swift in Sources */,
 				4D9B53F827D15E300041DFF3 /* CameraTestApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4D9B540627D15ED60041DFF3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D9B540F27D15ED60041DFF3 /* main.swift in Sources */,
+				4D9B540D27D15ED60041DFF3 /* cameraProvider.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4D9B541327D15ED60041DFF3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4D9B540927D15ED60041DFF3 /* camera */;
+			targetProxy = 4D9B541227D15ED60041DFF3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		4D9B540127D15E310041DFF3 /* Debug */ = {
@@ -263,6 +366,7 @@
 		4D9B540427D15E310041DFF3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = CameraTest/CameraTest.entitlements;
@@ -290,6 +394,7 @@
 		4D9B540527D15E310041DFF3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = CameraTest/CameraTest.entitlements;
@@ -314,6 +419,60 @@
 			};
 			name = Release;
 		};
+		4D9B541627D15ED60041DFF3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = camera/camera.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = M3KUT44L48;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = camera/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = camera;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = app.mmhmm.CameraTest.camera;
+				PRODUCT_NAME = "$(inherited)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		4D9B541727D15ED60041DFF3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = camera/camera.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = M3KUT44L48;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = camera/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = camera;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = app.mmhmm.CameraTest.camera;
+				PRODUCT_NAME = "$(inherited)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -331,6 +490,15 @@
 			buildConfigurations = (
 				4D9B540427D15E310041DFF3 /* Debug */,
 				4D9B540527D15E310041DFF3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4D9B541527D15ED60041DFF3 /* Build configuration list for PBXNativeTarget "camera" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4D9B541627D15ED60041DFF3 /* Debug */,
+				4D9B541727D15ED60041DFF3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
