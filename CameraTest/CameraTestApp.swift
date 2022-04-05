@@ -12,8 +12,10 @@ import SystemExtensions
 struct CameraTestApp: App, UnInstaller {
 	static let cameraID = "app.mmhmm.CameraTest.camera"
 	let delegate = RequestDelegate()
+	@StateObject var model = AppModel()
+	let coordinator = CameraCoordinator()
 	init() {
-		// Create an activation request and assign a delegate to
+		// Create an extension activation request and assign a delegate to
 		// receive reports of success or failure.
 		let request = OSSystemExtensionRequest.activationRequest(forExtensionWithIdentifier: CameraTestApp.cameraID,
 							 queue: DispatchQueue.main)
@@ -26,6 +28,7 @@ struct CameraTestApp: App, UnInstaller {
     var body: some Scene {
         WindowGroup {
             ContentView(self)
+				.environmentObject(model)
         }
     }
 	func unInstall() {
@@ -39,6 +42,7 @@ struct CameraTestApp: App, UnInstaller {
 		let extensionManager = OSSystemExtensionManager.shared
 		extensionManager.submitRequest(request)
 	}
+	
 }
 
 class RequestDelegate: NSObject, OSSystemExtensionRequestDelegate {

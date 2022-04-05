@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		4D0C47FB27E3F5F0002FFCAA /* CameraPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0C47FA27E3F5F0002FFCAA /* CameraPreview.swift */; };
+		4D0C47FD27E3FA3B002FFCAA /* CameraModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0C47FC27E3FA3B002FFCAA /* CameraModel.swift */; };
+		4D0C47FF27E3FAFC002FFCAA /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0C47FE27E3FAFC002FFCAA /* AppModel.swift */; };
+		4D0C480327E90E78002FFCAA /* CameraCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0C480227E90E78002FFCAA /* CameraCoordinator.swift */; };
 		4D9B53F827D15E300041DFF3 /* CameraTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9B53F727D15E300041DFF3 /* CameraTestApp.swift */; };
 		4D9B53FA27D15E300041DFF3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9B53F927D15E300041DFF3 /* ContentView.swift */; };
 		4D9B53FC27D15E310041DFF3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D9B53FB27D15E310041DFF3 /* Assets.xcassets */; };
@@ -43,6 +46,9 @@
 
 /* Begin PBXFileReference section */
 		4D0C47FA27E3F5F0002FFCAA /* CameraPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreview.swift; sourceTree = "<group>"; };
+		4D0C47FC27E3FA3B002FFCAA /* CameraModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraModel.swift; sourceTree = "<group>"; };
+		4D0C47FE27E3FAFC002FFCAA /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
+		4D0C480227E90E78002FFCAA /* CameraCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCoordinator.swift; sourceTree = "<group>"; };
 		4D9B53F427D15E300041DFF3 /* CameraTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CameraTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D9B53F727D15E300041DFF3 /* CameraTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraTestApp.swift; sourceTree = "<group>"; };
 		4D9B53F927D15E300041DFF3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -96,11 +102,14 @@
 			isa = PBXGroup;
 			children = (
 				4D9B53F727D15E300041DFF3 /* CameraTestApp.swift */,
+				4D0C480227E90E78002FFCAA /* CameraCoordinator.swift */,
 				4D9B53F927D15E300041DFF3 /* ContentView.swift */,
 				4D9B53FB27D15E310041DFF3 /* Assets.xcassets */,
 				4D9B540027D15E310041DFF3 /* CameraTest.entitlements */,
 				4D9B53FD27D15E310041DFF3 /* Preview Content */,
 				4D0C47FA27E3F5F0002FFCAA /* CameraPreview.swift */,
+				4D0C47FC27E3FA3B002FFCAA /* CameraModel.swift */,
+				4D0C47FE27E3FAFC002FFCAA /* AppModel.swift */,
 			);
 			path = CameraTest;
 			sourceTree = "<group>";
@@ -225,7 +234,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D0C47FB27E3F5F0002FFCAA /* CameraPreview.swift in Sources */,
+				4D0C480327E90E78002FFCAA /* CameraCoordinator.swift in Sources */,
 				4D9B53FA27D15E300041DFF3 /* ContentView.swift in Sources */,
+				4D0C47FD27E3FA3B002FFCAA /* CameraModel.swift in Sources */,
+				4D0C47FF27E3FAFC002FFCAA /* AppModel.swift in Sources */,
 				4D9B53F827D15E300041DFF3 /* CameraTestApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

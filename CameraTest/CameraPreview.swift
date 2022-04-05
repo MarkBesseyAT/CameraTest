@@ -10,7 +10,7 @@ import SwiftUI
 struct CameraPreview: NSViewRepresentable {
 	typealias NSViewType = NSView
 	func makeNSView(context: Context) -> NSView {
-		var view = NSView()
+		let view = NSView()
 		view.wantsLayer = true
 		view.layer?.backgroundColor = CGColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0)
 		// add the preview layer here

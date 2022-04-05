@@ -12,6 +12,7 @@ protocol UnInstaller {
 }
 
 struct ContentView: View {
+	@EnvironmentObject var model:AppModel
 	var unInstaller:UnInstaller
     var body: some View {
 		VStack() {
@@ -21,9 +22,10 @@ struct ContentView: View {
 				.frame(minWidth: 100, idealWidth: 200, maxWidth: 400, minHeight: 100, idealHeight: 200, maxHeight: 400, alignment: .center)
 				.aspectRatio(1.0, contentMode: .fit)
 				.padding()
-			Picker(selection: /*@START_MENU_TOKEN@*/.constant(1)/*@END_MENU_TOKEN@*/, label: Text("Camera")) {
-				/*@START_MENU_TOKEN@*/Text("1").tag(1)/*@END_MENU_TOKEN@*/
-				/*@START_MENU_TOKEN@*/Text("2").tag(2)/*@END_MENU_TOKEN@*/
+			Picker(selection: $model.selectedCameraId, label: Text("Camera")) {
+				ForEach(model.cameras, id:\.id) { camera in 
+					Text(camera.name)
+				}
 			}
 
 			Button("Un-install") {
@@ -47,5 +49,6 @@ class fakeUnInstaller: UnInstaller {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView(fakeUnInstaller())
+			.environmentObject(AppModel(withFakeCameras: ["MY CAMERA"], selected: "MY CAMERA"))
     }
 }
