@@ -13,7 +13,6 @@ struct CameraTestApp: App, UnInstaller {
 	static let cameraID = "app.mmhmm.CameraTest.camera"
 	let delegate = RequestDelegate()
 	@StateObject var model = AppModel()
-	let coordinator = CameraCoordinator()
 	init() {
 		// Create an extension activation request and assign a delegate to
 		// receive reports of success or failure.

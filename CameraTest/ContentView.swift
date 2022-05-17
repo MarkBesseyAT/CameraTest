@@ -26,7 +26,7 @@ struct ContentView: View {
 				ForEach(model.cameras, id:\.id) { camera in 
 					Text(camera.name)
 				}
-			}
+			}.padding()
 
 			Button("Un-install") {
 			// un-install
