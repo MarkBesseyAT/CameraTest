@@ -10,6 +10,15 @@
 		4D0C47FB27E3F5F0002FFCAA /* CameraPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0C47FA27E3F5F0002FFCAA /* CameraPreview.swift */; };
 		4D0C47FD27E3FA3B002FFCAA /* CameraModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0C47FC27E3FA3B002FFCAA /* CameraModel.swift */; };
 		4D0C47FF27E3FAFC002FFCAA /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0C47FE27E3FAFC002FFCAA /* AppModel.swift */; };
+		4D7E00E2283C4219005B3599 /* XPCService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7E00E1283C4219005B3599 /* XPCService.swift */; };
+		4D7E00E4283C4219005B3599 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7E00E3283C4219005B3599 /* main.swift */; };
+		4D7E00E8283C4219005B3599 /* XPCService.xpc in Embed XPC Services */ = {isa = PBXBuildFile; fileRef = 4D7E00DD283C4219005B3599 /* XPCService.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		4D7E00EE283C4AAF005B3599 /* XPCServiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7E00ED283C4AAF005B3599 /* XPCServiceDelegate.swift */; };
+		4D7E00EF283C4B61005B3599 /* XPCServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7E00DF283C4219005B3599 /* XPCServiceProtocol.swift */; };
+		4D7E00F0283C4B88005B3599 /* XPCServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7E00DF283C4219005B3599 /* XPCServiceProtocol.swift */; };
+		4D7E00F1283C4C40005B3599 /* XPCServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7E00DF283C4219005B3599 /* XPCServiceProtocol.swift */; };
+		4D92726E283D75110026508E /* XPCService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7E00E1283C4219005B3599 /* XPCService.swift */; };
+		4D92726F283D75140026508E /* XPCServiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7E00ED283C4AAF005B3599 /* XPCServiceDelegate.swift */; };
 		4D9B53F827D15E300041DFF3 /* CameraTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9B53F727D15E300041DFF3 /* CameraTestApp.swift */; };
 		4D9B53FA27D15E300041DFF3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9B53F927D15E300041DFF3 /* ContentView.swift */; };
 		4D9B53FC27D15E310041DFF3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D9B53FB27D15E310041DFF3 /* Assets.xcassets */; };
@@ -20,6 +29,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		4D7E00E6283C4219005B3599 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4D9B53EC27D15E300041DFF3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4D7E00DC283C4219005B3599;
+			remoteInfo = XPCService;
+		};
 		4D9B541227D15ED60041DFF3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4D9B53EC27D15E300041DFF3 /* Project object */;
@@ -30,6 +46,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		4D7E00E9283C4219005B3599 /* Embed XPC Services */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/XPCServices";
+			dstSubfolderSpec = 16;
+			files = (
+				4D7E00E8283C4219005B3599 /* XPCService.xpc in Embed XPC Services */,
+			);
+			name = "Embed XPC Services";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4D9B541827D15ED60041DFF3 /* Embed System Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -47,6 +74,13 @@
 		4D0C47FA27E3F5F0002FFCAA /* CameraPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreview.swift; sourceTree = "<group>"; };
 		4D0C47FC27E3FA3B002FFCAA /* CameraModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraModel.swift; sourceTree = "<group>"; };
 		4D0C47FE27E3FAFC002FFCAA /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
+		4D630187283C746200F2D453 /* XPCService.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = XPCService.entitlements; sourceTree = "<group>"; };
+		4D7E00DD283C4219005B3599 /* XPCService.xpc */ = {isa = PBXFileReference; explicitFileType = "wrapper.xpc-service"; includeInIndex = 0; path = XPCService.xpc; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D7E00DF283C4219005B3599 /* XPCServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XPCServiceProtocol.swift; sourceTree = "<group>"; };
+		4D7E00E1283C4219005B3599 /* XPCService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XPCService.swift; sourceTree = "<group>"; };
+		4D7E00E3283C4219005B3599 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		4D7E00E5283C4219005B3599 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4D7E00ED283C4AAF005B3599 /* XPCServiceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XPCServiceDelegate.swift; sourceTree = "<group>"; };
 		4D9B53F427D15E300041DFF3 /* CameraTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CameraTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D9B53F727D15E300041DFF3 /* CameraTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraTestApp.swift; sourceTree = "<group>"; };
 		4D9B53F927D15E300041DFF3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -61,6 +95,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		4D7E00DA283C4219005B3599 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4D9B53F127D15E300041DFF3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -78,11 +119,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4D7E00DE283C4219005B3599 /* XPCService */ = {
+			isa = PBXGroup;
+			children = (
+				4D7E00DF283C4219005B3599 /* XPCServiceProtocol.swift */,
+				4D7E00E1283C4219005B3599 /* XPCService.swift */,
+				4D7E00ED283C4AAF005B3599 /* XPCServiceDelegate.swift */,
+				4D7E00E3283C4219005B3599 /* main.swift */,
+				4D7E00E5283C4219005B3599 /* Info.plist */,
+				4D630187283C746200F2D453 /* XPCService.entitlements */,
+			);
+			path = XPCService;
+			sourceTree = "<group>";
+		};
 		4D9B53EB27D15E300041DFF3 = {
 			isa = PBXGroup;
 			children = (
 				4D9B53F627D15E300041DFF3 /* CameraTest */,
 				4D9B540B27D15ED60041DFF3 /* camera */,
+				4D7E00DE283C4219005B3599 /* XPCService */,
 				4D9B53F527D15E300041DFF3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -92,6 +147,7 @@
 			children = (
 				4D9B53F427D15E300041DFF3 /* CameraTest.app */,
 				4D9B540A27D15ED60041DFF3 /* app.mmhmm.CameraTest.camera.systemextension */,
+				4D7E00DD283C4219005B3599 /* XPCService.xpc */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -133,6 +189,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		4D7E00DC283C4219005B3599 /* XPCService */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4D7E00EC283C4219005B3599 /* Build configuration list for PBXNativeTarget "XPCService" */;
+			buildPhases = (
+				4D7E00D9283C4219005B3599 /* Sources */,
+				4D7E00DA283C4219005B3599 /* Frameworks */,
+				4D7E00DB283C4219005B3599 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = XPCService;
+			productName = XPCService;
+			productReference = 4D7E00DD283C4219005B3599 /* XPCService.xpc */;
+			productType = "com.apple.product-type.xpc-service";
+		};
 		4D9B53F327D15E300041DFF3 /* CameraTest */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4D9B540327D15E310041DFF3 /* Build configuration list for PBXNativeTarget "CameraTest" */;
@@ -141,11 +214,13 @@
 				4D9B53F127D15E300041DFF3 /* Frameworks */,
 				4D9B53F227D15E300041DFF3 /* Resources */,
 				4D9B541827D15ED60041DFF3 /* Embed System Extensions */,
+				4D7E00E9283C4219005B3599 /* Embed XPC Services */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				4D9B541327D15ED60041DFF3 /* PBXTargetDependency */,
+				4D7E00E7283C4219005B3599 /* PBXTargetDependency */,
 			);
 			name = CameraTest;
 			productName = CameraTest;
@@ -179,6 +254,9 @@
 				LastSwiftUpdateCheck = 1330;
 				LastUpgradeCheck = 1330;
 				TargetAttributes = {
+					4D7E00DC283C4219005B3599 = {
+						CreatedOnToolsVersion = 13.4;
+					};
 					4D9B53F327D15E300041DFF3 = {
 						CreatedOnToolsVersion = 13.3;
 					};
@@ -202,11 +280,19 @@
 			targets = (
 				4D9B53F327D15E300041DFF3 /* CameraTest */,
 				4D9B540927D15ED60041DFF3 /* camera */,
+				4D7E00DC283C4219005B3599 /* XPCService */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		4D7E00DB283C4219005B3599 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4D9B53F227D15E300041DFF3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -226,11 +312,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		4D7E00D9283C4219005B3599 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D7E00E4283C4219005B3599 /* main.swift in Sources */,
+				4D7E00EF283C4B61005B3599 /* XPCServiceProtocol.swift in Sources */,
+				4D7E00E2283C4219005B3599 /* XPCService.swift in Sources */,
+				4D7E00EE283C4AAF005B3599 /* XPCServiceDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4D9B53F027D15E300041DFF3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				4D0C47FB27E3F5F0002FFCAA /* CameraPreview.swift in Sources */,
+				4D7E00F0283C4B88005B3599 /* XPCServiceProtocol.swift in Sources */,
 				4D9B53FA27D15E300041DFF3 /* ContentView.swift in Sources */,
 				4D0C47FD27E3FA3B002FFCAA /* CameraModel.swift in Sources */,
 				4D0C47FF27E3FAFC002FFCAA /* AppModel.swift in Sources */,
@@ -243,13 +341,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D9B540F27D15ED60041DFF3 /* main.swift in Sources */,
+				4D7E00F1283C4C40005B3599 /* XPCServiceProtocol.swift in Sources */,
 				4D9B540D27D15ED60041DFF3 /* cameraProvider.swift in Sources */,
+				4D92726E283D75110026508E /* XPCService.swift in Sources */,
+				4D92726F283D75140026508E /* XPCServiceDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		4D7E00E7283C4219005B3599 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4D7E00DC283C4219005B3599 /* XPCService */;
+			targetProxy = 4D7E00E6283C4219005B3599 /* PBXContainerItemProxy */;
+		};
 		4D9B541327D15ED60041DFF3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 4D9B540927D15ED60041DFF3 /* camera */;
@@ -258,6 +364,50 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		4D7E00EA283C4219005B3599 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = XPCService/XPCService.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = M3KUT44L48;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = XPCService/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = XPCService;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = app.mmhmm.XPCService;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		4D7E00EB283C4219005B3599 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = XPCService/XPCService.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = M3KUT44L48;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = XPCService/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = XPCService;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = app.mmhmm.XPCService;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		4D9B540127D15E310041DFF3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -484,6 +634,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		4D7E00EC283C4219005B3599 /* Build configuration list for PBXNativeTarget "XPCService" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4D7E00EA283C4219005B3599 /* Debug */,
+				4D7E00EB283C4219005B3599 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4D9B53EF27D15E300041DFF3 /* Build configuration list for PBXProject "CameraTest" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -18,11 +18,7 @@ struct ContentView: View {
 		VStack() {
 			Text("Hello, world!")
             .padding()
-			CameraPreview()
-				.frame(minWidth: 100, idealWidth: 200, maxWidth: 400, minHeight: 100, idealHeight: 200, maxHeight: 400, alignment: .center)
-				.aspectRatio(1.0, contentMode: .fit)
-				.padding()
-			Picker(selection: $model.selectedCameraId, label: Text("Camera")) {
+			Picker(selection: $model.selectedCameraId, label: Text("Just a list of Cameras")) {
 				ForEach(model.cameras, id:\.id) { camera in 
 					Text(camera.name)
 				}

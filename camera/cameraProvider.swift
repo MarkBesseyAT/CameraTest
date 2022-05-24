@@ -281,6 +281,14 @@ class cameraProviderSource: NSObject, CMIOExtensionProviderSource {
 	func connect(to client: CMIOExtensionClient) throws {
 		
 		// Handle client connect
+		// listen for requests
+		let delegate = XPCServiceDelegate()
+		// this is the CMIOExtensionMachServiceName from the Info.plist
+		let listener = NSXPCListener.init(machServiceName: "M3KUT44L48.app.mmhmm.CameraTest.camera")
+		// this doesn't work, either
+		// let listener = NSXPCListener.service()
+		listener.delegate = delegate
+		listener.resume()
 	}
 	
 	func disconnect(from client: CMIOExtensionClient) {
