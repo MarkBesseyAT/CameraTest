@@ -39,8 +39,8 @@ struct CameraTestApp: App, UnInstaller {
 
 		// Make an XPC call to the camera extension. This fails!
 		// This is the CMIOExtensionMachServiceName specified in the extension
-		let camera_connection = NSXPCConnection(serviceName: "M3KUT44L48.app.mmhmm.CameraTest.camera")
-//		let camera_connection = NSXPCConnection(machServiceName: "M3KUT44L48.app.mmhmm.CameraTest.camera")
+//		let camera_connection = NSXPCConnection(serviceName: "M3KUT44L48.app.mmhmm.CameraTest.camera")
+		let camera_connection = NSXPCConnection(machServiceName: "M3KUT44L48.app.mmhmm.CameraTest.camera")
 		camera_connection.remoteObjectInterface = NSXPCInterface(with: XPCServiceProtocol.self)
 		camera_connection.resume()
 
