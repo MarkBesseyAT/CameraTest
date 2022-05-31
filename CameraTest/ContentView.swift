@@ -7,13 +7,9 @@
 
 import SwiftUI
 
-protocol UnInstaller {
-	func unInstall()
-}
-
 struct ContentView: View {
+	var helper:HelperMethods
 	@EnvironmentObject var model:AppModel
-	var unInstaller:UnInstaller
     var body: some View {
 		VStack() {
 			Text("Hello, world!")
@@ -26,25 +22,30 @@ struct ContentView: View {
 
 			Button("Un-install") {
 			// un-install
-				unInstaller.unInstall()
+				helper.unInstallExtension()
 			}
 			.padding()
 		}
     }
-	init(_ u:UnInstaller) {
-		unInstaller = u
-	}
 }
 
-class fakeUnInstaller: UnInstaller {
-	func unInstall() {
+class fakeHelper: HelperMethods {
+	var isInstalled: Bool {
+		return false;
+	}
+	
+	func installExtension() {
+		print("installing...")
+	}
+	
+	func unInstallExtension() {
 		print("uninstalling...")
 	}
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(fakeUnInstaller())
+		ContentView(helper: fakeHelper())
 			.environmentObject(AppModel(withFakeCameras: ["MY CAMERA"], selected: "MY CAMERA"))
     }
 }

@@ -10,6 +10,7 @@
 		4D0C47FB27E3F5F0002FFCAA /* CameraPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0C47FA27E3F5F0002FFCAA /* CameraPreview.swift */; };
 		4D0C47FD27E3FA3B002FFCAA /* CameraModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0C47FC27E3FA3B002FFCAA /* CameraModel.swift */; };
 		4D0C47FF27E3FAFC002FFCAA /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0C47FE27E3FAFC002FFCAA /* AppModel.swift */; };
+		4D5670CE2845CD7100AB80EF /* ExtensionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5670CD2845CD7100AB80EF /* ExtensionHelper.swift */; };
 		4D7E00E2283C4219005B3599 /* XPCService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7E00E1283C4219005B3599 /* XPCService.swift */; };
 		4D7E00E4283C4219005B3599 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7E00E3283C4219005B3599 /* main.swift */; };
 		4D7E00E8283C4219005B3599 /* XPCService.xpc in Embed XPC Services */ = {isa = PBXBuildFile; fileRef = 4D7E00DD283C4219005B3599 /* XPCService.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -74,6 +75,7 @@
 		4D0C47FA27E3F5F0002FFCAA /* CameraPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreview.swift; sourceTree = "<group>"; };
 		4D0C47FC27E3FA3B002FFCAA /* CameraModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraModel.swift; sourceTree = "<group>"; };
 		4D0C47FE27E3FAFC002FFCAA /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
+		4D5670CD2845CD7100AB80EF /* ExtensionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionHelper.swift; sourceTree = "<group>"; };
 		4D630187283C746200F2D453 /* XPCService.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = XPCService.entitlements; sourceTree = "<group>"; };
 		4D7E00DD283C4219005B3599 /* XPCService.xpc */ = {isa = PBXFileReference; explicitFileType = "wrapper.xpc-service"; includeInIndex = 0; path = XPCService.xpc; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D7E00DF283C4219005B3599 /* XPCServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XPCServiceProtocol.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 				4D0C47FA27E3F5F0002FFCAA /* CameraPreview.swift */,
 				4D0C47FC27E3FA3B002FFCAA /* CameraModel.swift */,
 				4D0C47FE27E3FAFC002FFCAA /* AppModel.swift */,
+				4D5670CD2845CD7100AB80EF /* ExtensionHelper.swift */,
 			);
 			path = CameraTest;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 				4D0C47FB27E3F5F0002FFCAA /* CameraPreview.swift in Sources */,
 				4D7E00F0283C4B88005B3599 /* XPCServiceProtocol.swift in Sources */,
 				4D9B53FA27D15E300041DFF3 /* ContentView.swift in Sources */,
+				4D5670CE2845CD7100AB80EF /* ExtensionHelper.swift in Sources */,
 				4D0C47FD27E3FA3B002FFCAA /* CameraModel.swift in Sources */,
 				4D0C47FF27E3FAFC002FFCAA /* AppModel.swift in Sources */,
 				4D9B53F827D15E300041DFF3 /* CameraTestApp.swift in Sources */,
