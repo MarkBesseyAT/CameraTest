@@ -12,10 +12,6 @@
 	<true/>
 	<key>com.apple.security.device.camera</key>
 	<true/>
-	<key>com.apple.security.temporary-exception.mach-lookup.global-name</key>
-	<array>
-		<string>M3KUT44L48.app.mmhmm.CameraTest.camera</string>
-	</array>
 	<key>com.apple.security.files.user-selected.read-only</key>
 	<true/>
 	<key>com.apple.developer.system-extension.install</key>
