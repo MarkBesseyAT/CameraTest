@@ -15,11 +15,11 @@ let kFrameRate: Int = 60
 
 // MARK: -
 
-class cameraDeviceSource: NSObject, CMIOExtensionDeviceSource {
+class CameraDeviceSource: NSObject, CMIOExtensionDeviceSource {
 	
 	private(set) var device: CMIOExtensionDevice!
 	
-	private var _streamSource: cameraStreamSource!
+	private var _streamSource: CameraStreamSource!
 	
 	private var _streamingCounter: UInt32 = 0
 	
@@ -58,7 +58,7 @@ class cameraDeviceSource: NSObject, CMIOExtensionDeviceSource {
 		_bufferAuxAttributes = [kCVPixelBufferPoolAllocationThresholdKey: 5]
 		
 		let videoID = UUID() // replace this with your video UUID
-		_streamSource = cameraStreamSource(localizedName: "SampleCapture.Video", streamID: videoID, streamFormat: videoStreamFormat, device: device)
+		_streamSource = CameraStreamSource(localizedName: "CameraTest.Video", streamID: videoID, streamFormat: videoStreamFormat, device: device)
 		do {
 			try device.addStream(_streamSource.stream)
 		} catch let error {
@@ -78,7 +78,7 @@ class cameraDeviceSource: NSObject, CMIOExtensionDeviceSource {
 			deviceProperties.transportType = kIOAudioDeviceTransportTypeVirtual
 		}
 		if properties.contains(.deviceModel) {
-			deviceProperties.model = "SampleCapture Model"
+			deviceProperties.model = "CameraTest Model"
 		}
 		
 		return deviceProperties
@@ -108,7 +108,7 @@ class cameraDeviceSource: NSObject, CMIOExtensionDeviceSource {
 			var pixelBuffer: CVPixelBuffer?
 			err = CVPixelBufferPoolCreatePixelBufferWithAuxAttributes(kCFAllocatorDefault, self._bufferPool, self._bufferAuxAttributes, &pixelBuffer)
 			if err != 0 {
-				os_log(.error, "out of pixel buffers \(err)")
+				//os_log(.error, "out of pixel buffers \(err)")
 			}
 			
 			if let pixelBuffer = pixelBuffer {
@@ -175,7 +175,7 @@ class cameraDeviceSource: NSObject, CMIOExtensionDeviceSource {
 
 // MARK: -
 
-class cameraStreamSource: NSObject, CMIOExtensionStreamSource {
+class CameraStreamSource: NSObject, CMIOExtensionStreamSource {
 	
 	private(set) var stream: CMIOExtensionStream!
 	
@@ -239,7 +239,7 @@ class cameraStreamSource: NSObject, CMIOExtensionStreamSource {
 	
 	func startStream() throws {
 		
-		guard let deviceSource = device.source as? cameraDeviceSource else {
+		guard let deviceSource = device.source as? CameraDeviceSource else {
 			fatalError("Unexpected source type \(String(describing: device.source))")
 		}
 		deviceSource.startStreaming()
@@ -247,7 +247,7 @@ class cameraStreamSource: NSObject, CMIOExtensionStreamSource {
 	
 	func stopStream() throws {
 		
-		guard let deviceSource = device.source as? cameraDeviceSource else {
+		guard let deviceSource = device.source as? CameraDeviceSource else {
 			fatalError("Unexpected source type \(String(describing: device.source))")
 		}
 		deviceSource.stopStreaming()
@@ -260,7 +260,7 @@ class cameraProviderSource: NSObject, CMIOExtensionProviderSource {
 	
 	private(set) var provider: CMIOExtensionProvider!
 	
-	private var deviceSource: cameraDeviceSource!
+	private var deviceSource: CameraDeviceSource!
 	
 	// CMIOExtensionProviderSource protocol methods (all are required)
 	
@@ -269,7 +269,7 @@ class cameraProviderSource: NSObject, CMIOExtensionProviderSource {
 		super.init()
 		
 		provider = CMIOExtensionProvider(source: self, clientQueue: clientQueue)
-		deviceSource = cameraDeviceSource(localizedName: "SampleCapture (Swift)")
+		deviceSource = CameraDeviceSource(localizedName: "CameraTest (extension)")
 		
 		do {
 			try provider.addDevice(deviceSource.device)
@@ -281,15 +281,6 @@ class cameraProviderSource: NSObject, CMIOExtensionProviderSource {
 	func connect(to client: CMIOExtensionClient) throws {
 		
 		// Handle client connect
-		// listen for requests
-		os_log("starting XPC listener")
-		let delegate = XPCServiceDelegate()
-		// this is the CMIOExtensionMachServiceName from the Info.plist
-		let listener = NSXPCListener.init(machServiceName: "M3KUT44L48.app.mmhmm.CameraTest.camera")
-		// this doesn't work, either
-		// let listener = NSXPCListener.service()
-		listener.delegate = delegate
-		listener.resume()
 	}
 	
 	func disconnect(from client: CMIOExtensionClient) {
@@ -307,7 +298,7 @@ class cameraProviderSource: NSObject, CMIOExtensionProviderSource {
 		
 		let providerProperties = CMIOExtensionProviderProperties(dictionary: [:])
 		if properties.contains(.providerManufacturer) {
-			providerProperties.manufacturer = "SampleCapture Manufacturer"
+			providerProperties.manufacturer = "CameraTest Manufacturer"
 		}
 		return providerProperties
 	}
