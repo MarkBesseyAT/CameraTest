@@ -12,9 +12,8 @@ struct ContentView: View {
 	@EnvironmentObject var model:AppModel
     var body: some View {
 		VStack() {
-			Text("Hello, world!")
-            .padding()
-			Picker(selection: $model.selectedCameraId, label: Text("Just a list of Cameras")) {
+			CameraPreview().frame(minWidth: 100, idealWidth: nil, maxWidth: nil, minHeight: 100, idealHeight: nil, maxHeight: nil, alignment: .center)
+			Picker(selection: $model.selectedCameraId, label: Text("Select Camera")) {
 				ForEach(model.cameras, id:\.id) { camera in 
 					Text(camera.name)
 				}
