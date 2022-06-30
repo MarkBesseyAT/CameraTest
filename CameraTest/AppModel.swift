@@ -8,6 +8,7 @@
 import Foundation
 import AVFoundation
 import Combine
+import CoreMediaIO
 
 class AppModel: NSObject, ObservableObject, AVCaptureVideoDataOutputSampleBufferDelegate {
 	let discoverySession: AVCaptureDevice.DiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera, .externalUnknown], mediaType: .video, position: .unspecified)
@@ -20,17 +21,28 @@ class AppModel: NSObject, ObservableObject, AVCaptureVideoDataOutputSampleBuffer
 	}
 	var cameraCancellable:Cancellable?
 	var defaultCancellable:Cancellable?
+	var captureQueue:DispatchQueue
 	override init() {
 		selectedCameraId = ""
+		captureQueue = DispatchQueue(label: "CaptureQueue")
 		super.init()
 		cameraCancellable = discoverySession.publisher(for: \.devices).sink(receiveValue: { devices in
 			self.updateCameras(devices)
 		})
+		let systemID = CMIOObjectID(kCMIOObjectSystemObject)
+		CMIOObjectShow(systemID)
+		let root = CMIODeviceHelper.systemObject()
+		if let children = root.children {
+			for kid in children {
+				print("ID: \(kid.id)\t name:\(kid.name ?? "(no name)")")
+			}
+		}
 	}
 	
 	init(withFakeCameras fakeCameras:[String], selected: String) {
 		cameras = []
 		selectedCameraId = ""
+		self.captureQueue = DispatchQueue.global(qos: .default)
 		super.init()
 		for name in fakeCameras {
 			let camera = CameraModel(name: name, size: CGSize(width: 1920, height: 1080), id: name)
@@ -64,16 +76,17 @@ class AppModel: NSObject, ObservableObject, AVCaptureVideoDataOutputSampleBuffer
 			captureSession.canAddInput(videoDeviceInput)
 			else { return }
 		captureSession.addInput(videoDeviceInput)
+		captureSession.sessionPreset = .high
 		let videoOutput = AVCaptureVideoDataOutput()
 		guard captureSession.canAddOutput(videoOutput) else { return }
-		captureSession.sessionPreset = .high
 		captureSession.addOutput(videoOutput)
+		videoOutput.setSampleBufferDelegate(self, queue: self.captureQueue)
 		captureSession.commitConfiguration()
 		captureSession.startRunning()
 		self.captureSession = captureSession
 	}
 	
 	func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-		print("got one")
+		//print("got one")
 	}
 }

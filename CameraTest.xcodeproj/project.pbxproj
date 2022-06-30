@@ -15,6 +15,7 @@
 		4D7D87982860D81D00F8E655 /* ExtensionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7D87972860D81D00F8E655 /* ExtensionProvider.swift */; };
 		4D7D879A2860D90900F8E655 /* OutputDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7D87992860D90900F8E655 /* OutputDevice.swift */; };
 		4D85AD8E284AC51000ACFFF1 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4D85AD8D284AC51000ACFFF1 /* README.md */; };
+		4D8A5C55286BF59F0050BB64 /* CMIODeviceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8A5C54286BF59F0050BB64 /* CMIODeviceHelper.swift */; };
 		4D9B53F827D15E300041DFF3 /* CameraTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9B53F727D15E300041DFF3 /* CameraTestApp.swift */; };
 		4D9B53FA27D15E300041DFF3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9B53F927D15E300041DFF3 /* ContentView.swift */; };
 		4D9B53FC27D15E310041DFF3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D9B53FB27D15E310041DFF3 /* Assets.xcassets */; };
@@ -67,6 +68,7 @@
 		4D7D87972860D81D00F8E655 /* ExtensionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionProvider.swift; sourceTree = "<group>"; };
 		4D7D87992860D90900F8E655 /* OutputDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputDevice.swift; sourceTree = "<group>"; };
 		4D85AD8D284AC51000ACFFF1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.documentation.markup; };
+		4D8A5C54286BF59F0050BB64 /* CMIODeviceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CMIODeviceHelper.swift; sourceTree = "<group>"; };
 		4D9B53F427D15E300041DFF3 /* CameraTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CameraTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D9B53F727D15E300041DFF3 /* CameraTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraTestApp.swift; sourceTree = "<group>"; };
 		4D9B53F927D15E300041DFF3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				4D5670CF28495D3700AB80EF /* Headshot.jpg */,
+				4D8A5C54286BF59F0050BB64 /* CMIODeviceHelper.swift */,
 				4D9B53F727D15E300041DFF3 /* CameraTestApp.swift */,
 				4D9B53F927D15E300041DFF3 /* ContentView.swift */,
 				4D9B53FB27D15E310041DFF3 /* Assets.xcassets */,
@@ -261,6 +264,7 @@
 				4D0C47FB27E3F5F0002FFCAA /* CameraPreview.swift in Sources */,
 				4D9B53FA27D15E300041DFF3 /* ContentView.swift in Sources */,
 				4D5670CE2845CD7100AB80EF /* ExtensionHelper.swift in Sources */,
+				4D8A5C55286BF59F0050BB64 /* CMIODeviceHelper.swift in Sources */,
 				4D0C47FD27E3FA3B002FFCAA /* CameraModel.swift in Sources */,
 				4D0C47FF27E3FAFC002FFCAA /* AppModel.swift in Sources */,
 				4D9B53F827D15E300041DFF3 /* CameraTestApp.swift in Sources */,
