@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D0299612890F89F00E7E57D /* CameraExtensionConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D02995F2890F89F00E7E57D /* CameraExtensionConnector.m */; };
 		4D0C47FB27E3F5F0002FFCAA /* CameraPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0C47FA27E3F5F0002FFCAA /* CameraPreview.swift */; };
 		4D0C47FD27E3FA3B002FFCAA /* CameraModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0C47FC27E3FA3B002FFCAA /* CameraModel.swift */; };
 		4D0C47FF27E3FAFC002FFCAA /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0C47FE27E3FAFC002FFCAA /* AppModel.swift */; };
+		4D124BE2286FBF9E00BE0962 /* uuids.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D124BE1286FBF9E00BE0962 /* uuids.swift */; };
+		4D124BE3286FBF9E00BE0962 /* uuids.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D124BE1286FBF9E00BE0962 /* uuids.swift */; };
 		4D5670CE2845CD7100AB80EF /* ExtensionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5670CD2845CD7100AB80EF /* ExtensionHelper.swift */; };
 		4D5670D028495D3700AB80EF /* Headshot.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4D5670CF28495D3700AB80EF /* Headshot.jpg */; };
 		4D7D87982860D81D00F8E655 /* ExtensionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7D87972860D81D00F8E655 /* ExtensionProvider.swift */; };
@@ -60,9 +63,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4D02995E2890F89F00E7E57D /* CameraTest-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CameraTest-Bridging-Header.h"; sourceTree = "<group>"; };
+		4D02995F2890F89F00E7E57D /* CameraExtensionConnector.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CameraExtensionConnector.m; sourceTree = "<group>"; };
+		4D0299602890F89F00E7E57D /* CameraExtensionConnector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CameraExtensionConnector.h; sourceTree = "<group>"; };
 		4D0C47FA27E3F5F0002FFCAA /* CameraPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreview.swift; sourceTree = "<group>"; };
 		4D0C47FC27E3FA3B002FFCAA /* CameraModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraModel.swift; sourceTree = "<group>"; };
 		4D0C47FE27E3FAFC002FFCAA /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
+		4D124BE1286FBF9E00BE0962 /* uuids.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = uuids.swift; sourceTree = "<group>"; };
 		4D5670CD2845CD7100AB80EF /* ExtensionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionHelper.swift; sourceTree = "<group>"; };
 		4D5670CF28495D3700AB80EF /* Headshot.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Headshot.jpg; path = ../../../Pictures/Headshot.jpg; sourceTree = "<group>"; };
 		4D7D87972860D81D00F8E655 /* ExtensionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionProvider.swift; sourceTree = "<group>"; };
@@ -103,6 +110,7 @@
 		4D9B53EB27D15E300041DFF3 = {
 			isa = PBXGroup;
 			children = (
+				4D124BE1286FBF9E00BE0962 /* uuids.swift */,
 				4D85AD8D284AC51000ACFFF1 /* README.md */,
 				4D9B53F627D15E300041DFF3 /* CameraTest */,
 				4D9B540B27D15ED60041DFF3 /* CameraExtension */,
@@ -133,6 +141,9 @@
 				4D0C47FE27E3FAFC002FFCAA /* AppModel.swift */,
 				4D5670CD2845CD7100AB80EF /* ExtensionHelper.swift */,
 				4D9B540027D15E310041DFF3 /* CameraTest.entitlements */,
+				4D02995F2890F89F00E7E57D /* CameraExtensionConnector.m */,
+				4D0299602890F89F00E7E57D /* CameraExtensionConnector.h */,
+				4D02995E2890F89F00E7E57D /* CameraTest-Bridging-Header.h */,
 			);
 			path = CameraTest;
 			sourceTree = "<group>";
@@ -210,6 +221,7 @@
 				TargetAttributes = {
 					4D9B53F327D15E300041DFF3 = {
 						CreatedOnToolsVersion = 13.3;
+						LastSwiftMigration = 1340;
 					};
 					4D9B540927D15ED60041DFF3 = {
 						CreatedOnToolsVersion = 13.3;
@@ -261,6 +273,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D124BE2286FBF9E00BE0962 /* uuids.swift in Sources */,
+				4D0299612890F89F00E7E57D /* CameraExtensionConnector.m in Sources */,
 				4D0C47FB27E3F5F0002FFCAA /* CameraPreview.swift in Sources */,
 				4D9B53FA27D15E300041DFF3 /* ContentView.swift in Sources */,
 				4D5670CE2845CD7100AB80EF /* ExtensionHelper.swift in Sources */,
@@ -279,6 +293,7 @@
 				4D9B540D27D15ED60041DFF3 /* CameraDevice.swift in Sources */,
 				4D7D879A2860D90900F8E655 /* OutputDevice.swift in Sources */,
 				4D7D87982860D81D00F8E655 /* ExtensionProvider.swift in Sources */,
+				4D124BE3286FBF9E00BE0962 /* uuids.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,6 +427,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = CameraTest/CameraTest.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -431,6 +447,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = app.mmhmm.CameraTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "CameraTest/CameraTest-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -441,6 +459,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = CameraTest/CameraTest.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -460,6 +479,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = app.mmhmm.CameraTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "CameraTest/CameraTest-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
