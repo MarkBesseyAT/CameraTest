@@ -9,6 +9,13 @@
 
 typedef NSArray<NSNumber*>* NumberArray;
 
+@interface CameraExtensionConnector() {
+	CMSimpleQueueRef _queue;
+}
+@property(readwrite) CMSimpleQueueRef queue;
+@end
+
+@implementation CameraExtensionConnector
 NSArray<NSNumber*>* getDeviceIDs(void);
 NSString* getStringValue(CMIODeviceID id,
 						 CMIOObjectPropertySelector selector);
@@ -20,7 +27,7 @@ UInt32 getIntValue(CMIODeviceID id,
 			CMIOObjectPropertySelector selector);
 OSStatus startSinkStream(void);
 
-CMIODeviceID getCameraID(NSString *name) {
+- (CMIODeviceID) getCameraID: (NSString *) name {
 	CMIODeviceID cameraID = 0;
 	NumberArray devices = getDeviceIDs();
 	for (NSNumber* id in devices) {
@@ -36,7 +43,7 @@ CMIODeviceID getCameraID(NSString *name) {
 	return cameraID;
 }
 
-CMIOStreamID getSinkStreamID(CMIODeviceID device) {
+-(CMIOStreamID) getSinkStreamID: (CMIODeviceID)device {
 	NumberArray streams = getArrayValue(device, kCMIODevicePropertyStreams);
 	CMIOStreamID streamID = 0;
 	for (NSNumber* id in streams) {
@@ -55,15 +62,24 @@ CMIOStreamID getSinkStreamID(CMIODeviceID device) {
 
 void queueAlteredProc(CMIOStreamID streamID, void* token, void* refCon) {
 	// okay, a buffer has been processed. Now what?
-	NSLog(@"time to queue?");
-	
+	CameraExtensionConnector* connector = (__bridge CameraExtensionConnector*)refCon;
+	if (connector == nil) {
+		NSLog(@"Oops, no self pointer.");
+		return;
+	}
+	int32_t count = CMSimpleQueueGetCount(connector.queue);
+	int32_t capacity = CMSimpleQueueGetCapacity(connector.queue);
+	if (count >= capacity) {
+		NSLog(@"queue stalled");
+		return;
+	}
 }
 
-OSStatus startSinkStream(void) {
+- (OSStatus) startSinkStream {
 	int width = 1920;
 	int height = 1080;
-	CMIODeviceID device = getCameraID(@"Sample Camera");
-	CMIOStreamID stream = getSinkStreamID(device);
+	CMIODeviceID device = [self getCameraID: @"Sample Camera"];
+	CMIOStreamID stream = [self getSinkStreamID: device];
 	CMFormatDescriptionRef formatDescription;
 	CMVideoFormatDescriptionCreate(NULL, kCVPixelFormatType_32BGRA, width, height, NULL, &formatDescription);
 	NSDictionary* pixelBufferAttributes = @{
@@ -74,8 +90,7 @@ OSStatus startSinkStream(void) {
 	};
 	CVPixelBufferPoolRef pool;
 	CVPixelBufferPoolCreate(NULL, NULL, (__bridge CFDictionaryRef _Nullable)(pixelBufferAttributes), &pool);
-	CMSimpleQueueRef mediaQueue;
-	OSStatus result = CMIOStreamCopyBufferQueue(stream, queueAlteredProc, NULL/*refCon*/, &mediaQueue);
+	OSStatus result = CMIOStreamCopyBufferQueue(stream, queueAlteredProc, (__bridge void *)(self)/*refCon*/, &_queue);
 	if (result != 0) {
 		NSLog(@"Failed to get queue.");
 	}
@@ -83,6 +98,14 @@ OSStatus startSinkStream(void) {
 	return 0;
 }
 
+- (void) send:(CMSampleBufferRef)buffer {
+	OSStatus result = CMSimpleQueueEnqueue(_queue, buffer);
+	if (result == kCMSimpleQueueError_QueueIsFull) {
+		NSLog(@"queue is full.");
+	} else if (result != noErr) {
+		NSLog(@"failed to enqueue, error = %d", result);
+	}
+}
 OSStatus stopSinkStream(CMIOStreamID stream) {
 	return 0;
 }
@@ -174,3 +197,4 @@ NSArray<NSNumber*>* getArrayValue(CMIODeviceID id,
 NSArray<NSNumber*>* getDeviceIDs() {
 	return getArrayValue(kCMIOObjectSystemObject, kCMIOObjectPropertyOwnedObjects);
 }
+@end

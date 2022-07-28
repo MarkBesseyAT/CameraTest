@@ -22,8 +22,10 @@ class AppModel: NSObject, ObservableObject, AVCaptureVideoDataOutputSampleBuffer
 	var cameraCancellable:Cancellable?
 	var defaultCancellable:Cancellable?
 	var captureQueue:DispatchQueue
+	var connector:CameraExtensionConnector?
 	override init() {
-		startSinkStream();
+		connector = CameraExtensionConnector()
+		connector?.startSinkStream();
 		selectedCameraId = ""
 		captureQueue = DispatchQueue(label: "CaptureQueue")
 		super.init()
@@ -89,5 +91,7 @@ class AppModel: NSObject, ObservableObject, AVCaptureVideoDataOutputSampleBuffer
 	
 	func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
 		//print("got one")
+		guard let connector = connector else {return}
+		connector.send(sampleBuffer)
 	}
 }

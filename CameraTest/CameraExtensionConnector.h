@@ -11,7 +11,11 @@
 // The C API for CoreMediaIO
 #import <CoreMediaIO/CMIOHardware.h>
 
-CMIODeviceID getCameraID(NSString* name);
-CMIOStreamID getSinkStreamID(CMIODeviceID device);
-OSStatus startSinkStream(void);
+@interface CameraExtensionConnector: NSObject {
+}
+- (CMIODeviceID) getCameraID:(NSString*) name;
+- (CMIOStreamID) getSinkStreamID:(CMIODeviceID) device;
+- (OSStatus) startSinkStream;
+- (void) send:(CMSampleBufferRef)buffer;
+@end
 #endif /* CameraExtensionConnector_h */
