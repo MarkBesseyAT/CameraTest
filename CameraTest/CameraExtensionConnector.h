@@ -12,6 +12,6 @@
 #import <CoreMediaIO/CMIOHardware.h>
 
 CMIODeviceID getCameraID(NSString* name);
-CMIOStreamID getSinkStreamID(void);
-NSArray<NSNumber*>* getDeviceIDs(void);
+CMIOStreamID getSinkStreamID(CMIODeviceID device);
+OSStatus startSinkStream(void);
 #endif /* CameraExtensionConnector_h */

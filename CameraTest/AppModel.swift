@@ -23,7 +23,7 @@ class AppModel: NSObject, ObservableObject, AVCaptureVideoDataOutputSampleBuffer
 	var defaultCancellable:Cancellable?
 	var captureQueue:DispatchQueue
 	override init() {
-		var id = getSinkStreamID()
+		startSinkStream();
 		selectedCameraId = ""
 		captureQueue = DispatchQueue(label: "CaptureQueue")
 		super.init()
