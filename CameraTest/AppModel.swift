@@ -93,5 +93,6 @@ class AppModel: NSObject, ObservableObject, AVCaptureVideoDataOutputSampleBuffer
 		//print("got one")
 		guard let connector = connector else {return}
 		connector.send(sampleBuffer)
+        //connector.send()
 	}
 }

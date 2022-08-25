@@ -30,14 +30,21 @@ struct ExtensionHelper: HelperMethods {
 	func unInstallExtension() {
 		// Create a deactivation request and assign a delegate to
 		// receive reports of success or failure.
-		let request = OSSystemExtensionRequest.deactivationRequest(forExtensionWithIdentifier: CameraTestApp.cameraID,
+		var request = OSSystemExtensionRequest.deactivationRequest(forExtensionWithIdentifier: CameraTestApp.cameraID,
 						 queue: DispatchQueue.main)
 		request.delegate = delegate
 
 		// Submit the request to the system.
 		let extensionManager = OSSystemExtensionManager.shared
 		extensionManager.submitRequest(request)
-	}
+
+      request = OSSystemExtensionRequest.deactivationRequest(forExtensionWithIdentifier: "app.mmhmm.CameraTest.CameraExtension",
+               queue: DispatchQueue.main)
+      request.delegate = delegate
+
+      // Submit the request to the system.
+      extensionManager.submitRequest(request)
+  }
 }
 
 class RequestDelegate: NSObject, OSSystemExtensionRequestDelegate {

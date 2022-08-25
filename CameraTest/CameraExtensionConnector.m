@@ -34,7 +34,7 @@ NSArray<NSNumber*>* getDeviceIDs(void);
 @implementation CameraExtensionConnector
 
 - (instancetype) init {
-	return [self initWithCameraNamed:@"Sample Camera"];
+	return [self initWithCameraNamed:@"Mmhmm Camera2 (new)"];
 }
 - (instancetype) initWithCameraNamed:(NSString *)name {
 	if (self = [super init]) {
@@ -66,7 +66,7 @@ NSArray<NSNumber*>* getDeviceIDs(void);
 										kCMIOObjectPropertyName);
 		if (name != NULL) {
 			// check it here
-			if ([name isEqualToString:@"Sample Camera"]) {
+			if ([name isEqualToString:@"Mmhmm Camera2 (new)"]) {
 				cameraID = id.unsignedIntValue;
 			}
 		}
@@ -131,12 +131,21 @@ NSArray<NSNumber*>* getDeviceIDs(void);
 }
 
 - (void) send:(CMSampleBufferRef)sampleBuffer {
+  static BOOL firstError=YES;
+    // retain the buffer, since the CMSimpleQueue doesn't
 	CFRetain(sampleBuffer);
+//    NSLog(@"queuing %p", sampleBuffer);
 	OSStatus result = CMSimpleQueueEnqueue(_queue, sampleBuffer);
 	if (result == kCMSimpleQueueError_QueueIsFull) {
+      if (firstError) {
 		NSLog(@"queue is full.");
+        firstError = NO;
+      }
 	} else if (result != noErr) {
+      if (firstError) {
 		NSLog(@"failed to enqueue, error = %d", result);
+        firstError = NO;
+      }
 	}
 }
 
@@ -167,6 +176,8 @@ void queueAlteredProc(CMIOStreamID streamID, void* token, void* refCon) {
 		NSLog(@"Oops, no self pointer.");
 		return;
 	}
+//    NSLog(@"qap: token %p", token);
+    //CMSampleBufferRef buffer = (CMSampleBufferRef)token;
 	int32_t count = CMSimpleQueueGetCount(connector.queue);
 	int32_t capacity = CMSimpleQueueGetCapacity(connector.queue);
 	if (count >= capacity) {

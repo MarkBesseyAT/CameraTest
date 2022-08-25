@@ -1,14 +1,14 @@
 //
 //  main.swift
-//  camera
+//  cameraextension
 //
-//  Created by Mark Bessey on 3/3/22.
+//  Created by laurent denoue on 7/1/22.
 //
 
 import Foundation
 import CoreMediaIO
 
-let providerSource = ExtensionProviderSource(clientQueue: nil)
+let providerSource = cameraProviderSource(clientQueue: nil)
 CMIOExtensionProvider.startService(provider: providerSource.provider)
 
 CFRunLoopRun()

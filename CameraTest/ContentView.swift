@@ -19,10 +19,15 @@ struct ContentView: View {
 				}
 			}.padding()
 
-			Button("Un-install") {
-			// un-install
-				helper.unInstallExtension()
-			}
+            Button("Install") {
+              // Install
+              helper.installExtension()
+            }
+            .padding()
+            Button("Un-install") {
+              // un-install
+              helper.unInstallExtension()
+            }
 			.padding()
 		}
     }
