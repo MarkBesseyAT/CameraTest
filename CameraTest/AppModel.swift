@@ -37,7 +37,10 @@ class AppModel: NSObject, ObservableObject, AVCaptureVideoDataOutputSampleBuffer
 		let root = CMIODeviceHelper.systemObject()
 		if let children = root.children {
 			for kid in children {
-				print("ID: \(kid.id)\t name:\(kid.name ?? "(no name)")")
+              print("ID: \(kid.id)\tname:\(kid.name ?? "(no name)")\tuuid:\(kid.uuid ?? "(none)")")
+              if kid.uuid == kDeviceUUID.uuidString {
+                print("[Camera extension is installed]")
+              }
 			}
 		}
 	}

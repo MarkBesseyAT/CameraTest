@@ -34,7 +34,7 @@ NSArray<NSNumber*>* getDeviceIDs(void);
 @implementation CameraExtensionConnector
 
 - (instancetype) init {
-	return [self initWithCameraNamed:@"Mmhmm Camera2 (new)"];
+	return [self initWithCameraNamed:@"mmhmm Camera (new)"];
 }
 - (instancetype) initWithCameraNamed:(NSString *)name {
 	if (self = [super init]) {
@@ -66,7 +66,7 @@ NSArray<NSNumber*>* getDeviceIDs(void);
 										kCMIOObjectPropertyName);
 		if (name != NULL) {
 			// check it here
-			if ([name isEqualToString:@"Mmhmm Camera2 (new)"]) {
+			if ([name isEqualToString:@"mmhmm Camera (new)"]) {
 				cameraID = id.unsignedIntValue;
 			}
 		}

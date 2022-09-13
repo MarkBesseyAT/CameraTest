@@ -24,7 +24,7 @@
 		4D9B53FA27D15E300041DFF3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9B53F927D15E300041DFF3 /* ContentView.swift */; };
 		4D9B53FC27D15E310041DFF3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D9B53FB27D15E310041DFF3 /* Assets.xcassets */; };
 		4D9B53FF27D15E310041DFF3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D9B53FE27D15E310041DFF3 /* Preview Assets.xcassets */; };
-		4D9B541427D15ED60041DFF3 /* app.mmhmm.CameraTest2.extension.systemextension in Embed System Extensions */ = {isa = PBXBuildFile; fileRef = 4D9B540A27D15ED60041DFF3 /* app.mmhmm.CameraTest2.extension.systemextension */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		4D9B541427D15ED60041DFF3 /* app.mmhmm.hybrid.extension.systemextension in Embed System Extensions */ = {isa = PBXBuildFile; fileRef = 4D9B540A27D15ED60041DFF3 /* app.mmhmm.hybrid.extension.systemextension */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,7 +54,7 @@
 			dstPath = "$(SYSTEM_EXTENSIONS_FOLDER_PATH)";
 			dstSubfolderSpec = 16;
 			files = (
-				4D9B541427D15ED60041DFF3 /* app.mmhmm.CameraTest2.extension.systemextension in Embed System Extensions */,
+				4D9B541427D15ED60041DFF3 /* app.mmhmm.hybrid.extension.systemextension in Embed System Extensions */,
 			);
 			name = "Embed System Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -82,7 +82,7 @@
 		4D9B53FB27D15E310041DFF3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4D9B53FE27D15E310041DFF3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4D9B540027D15E310041DFF3 /* CameraTest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CameraTest.entitlements; sourceTree = "<group>"; };
-		4D9B540A27D15ED60041DFF3 /* app.mmhmm.CameraTest2.extension.systemextension */ = {isa = PBXFileReference; explicitFileType = "wrapper.system-extension"; includeInIndex = 0; path = app.mmhmm.CameraTest2.extension.systemextension; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D9B540A27D15ED60041DFF3 /* app.mmhmm.hybrid.extension.systemextension */ = {isa = PBXFileReference; explicitFileType = "wrapper.system-extension"; includeInIndex = 0; path = app.mmhmm.hybrid.extension.systemextension; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D9B541027D15ED60041DFF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D9B541127D15ED60041DFF3 /* CameraExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CameraExtension.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -120,7 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				4D9B53F427D15E300041DFF3 /* CameraTest.app */,
-				4D9B540A27D15ED60041DFF3 /* app.mmhmm.CameraTest2.extension.systemextension */,
+				4D9B540A27D15ED60041DFF3 /* app.mmhmm.hybrid.extension.systemextension */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -203,7 +203,7 @@
 			);
 			name = CameraExtension;
 			productName = camera;
-			productReference = 4D9B540A27D15ED60041DFF3 /* app.mmhmm.CameraTest2.extension.systemextension */;
+			productReference = 4D9B540A27D15ED60041DFF3 /* app.mmhmm.hybrid.extension.systemextension */;
 			productType = "com.apple.product-type.system-extension";
 		};
 /* End PBXNativeTarget section */
@@ -464,7 +464,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CameraTest/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = M3KUT44L48;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -504,7 +504,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.3;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = app.mmhmm.CameraTest2.extension;
+				PRODUCT_BUNDLE_IDENTIFIER = app.mmhmm.hybrid.extension;
 				PRODUCT_NAME = "$(inherited)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -532,7 +532,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.3;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = app.mmhmm.CameraTest2.extension;
+				PRODUCT_BUNDLE_IDENTIFIER = app.mmhmm.hybrid.extension;
 				PRODUCT_NAME = "$(inherited)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;

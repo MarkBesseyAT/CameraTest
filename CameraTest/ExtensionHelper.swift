@@ -7,6 +7,7 @@
 
 //import Foundation
 import SystemExtensions
+import AppKit
 
 protocol HelperMethods {
 	func installExtension()
@@ -36,14 +37,7 @@ struct ExtensionHelper: HelperMethods {
 
 		// Submit the request to the system.
 		let extensionManager = OSSystemExtensionManager.shared
-		extensionManager.submitRequest(request)
-
-      request = OSSystemExtensionRequest.deactivationRequest(forExtensionWithIdentifier: "app.mmhmm.CameraTest.CameraExtension",
-               queue: DispatchQueue.main)
-      request.delegate = delegate
-
-      // Submit the request to the system.
-      extensionManager.submitRequest(request)
+        extensionManager.submitRequest(request)
   }
 }
 
@@ -76,6 +70,8 @@ class RequestDelegate: NSObject, OSSystemExtensionRequestDelegate {
 	
 	func request(_ request: OSSystemExtensionRequest, didFailWithError error: Error) {
 		print("an error occurred: ", error.localizedDescription)
+        let alert = NSAlert(error: error)
+        alert.runModal()
 	}
 	
 }

@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct CameraTestApp: App {
-	static let cameraID = "app.mmhmm.CameraTest2.extension"
+	static let cameraID = "app.mmhmm.hybrid.extension"
 	let helper = ExtensionHelper()
 	@StateObject var model = AppModel()
 	init() {

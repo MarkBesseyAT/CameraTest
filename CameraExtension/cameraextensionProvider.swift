@@ -42,7 +42,7 @@ class cameraDeviceSource: NSObject, CMIOExtensionDeviceSource {
     
     private var _whiteStripeIsAscending: Bool = false
     
-    var lastMessage = "Mmhmm Camera for macOS"
+    var lastMessage = "mmhmm Camera for macOS"
     
     func myStreamingCounter() -> String {
         return "sc=\(_streamingCounter)"
@@ -57,8 +57,7 @@ class cameraDeviceSource: NSObject, CMIOExtensionDeviceSource {
             NSAttributedString.Key.paragraphStyle: paragraphStyle
         ]
         super.init()
-        let deviceID = UUID()
-        self.device = CMIOExtensionDevice(localizedName: localizedName, deviceID: deviceID, legacyDeviceID: deviceID.uuidString, source: self)
+        self.device = CMIOExtensionDevice(localizedName: localizedName, deviceID: deviceUUID, legacyDeviceID: deviceUUID.uuidString, source: self)
         
         //let dims = CMVideoDimensions(width: 1920, height: 1080)
         let dims = CMVideoDimensions(width: fixedCamWidth, height: fixedCamHeight)
@@ -79,10 +78,8 @@ class cameraDeviceSource: NSObject, CMIOExtensionDeviceSource {
         let videoStreamFormat = CMIOExtensionStreamFormat.init(formatDescription: _videoDescription, maxFrameDuration: CMTime(value: 1, timescale: Int32(kFrameRate)), minFrameDuration: CMTime(value: 1, timescale: Int32(kFrameRate)), validFrameDurations: nil)
         _bufferAuxAttributes = [kCVPixelBufferPoolAllocationThresholdKey: 5]
         
-        let videoID = UUID()
-        _streamSource = cameraStreamSource(localizedName: "SampleCamera.Video", streamID: videoID, streamFormat: videoStreamFormat, device: device)
-        let videoSinkID = UUID()
-        _streamSink = cameraStreamSink(localizedName: "SampleCamera.Video.Sink", streamID: videoSinkID, streamFormat: videoStreamFormat, device: device)
+        _streamSource = cameraStreamSource(localizedName: "mmhmm.camera.extension.video", streamID: cameraStreamUUID, streamFormat: videoStreamFormat, device: device)
+        _streamSink = cameraStreamSink(localizedName: "mmhmm.camera.extension.video", streamID: sinkStreamUUID, streamFormat: videoStreamFormat, device: device)
         do {
             try device.addStream(_streamSource.stream)
             try device.addStream(_streamSink.stream)
