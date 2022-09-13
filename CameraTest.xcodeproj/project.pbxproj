@@ -17,7 +17,7 @@
 		4D237EB728B56CB00076F652 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D237EB428B56CB00076F652 /* Config.swift */; };
 		4D237EB828B56CB00076F652 /* cameraextensionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D237EB528B56CB00076F652 /* cameraextensionProvider.swift */; };
 		4D5670CE2845CD7100AB80EF /* ExtensionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5670CD2845CD7100AB80EF /* ExtensionHelper.swift */; };
-		4D5670D028495D3700AB80EF /* Headshot.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4D5670CF28495D3700AB80EF /* Headshot.jpg */; };
+		4D75598D28D0319C006185EF /* Headshot.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4D75598C28D0319C006185EF /* Headshot.jpg */; };
 		4D85AD8E284AC51000ACFFF1 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4D85AD8D284AC51000ACFFF1 /* README.md */; };
 		4D8A5C55286BF59F0050BB64 /* CMIODeviceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8A5C54286BF59F0050BB64 /* CMIODeviceHelper.swift */; };
 		4D9B53F827D15E300041DFF3 /* CameraTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9B53F727D15E300041DFF3 /* CameraTestApp.swift */; };
@@ -73,7 +73,7 @@
 		4D237EB428B56CB00076F652 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		4D237EB528B56CB00076F652 /* cameraextensionProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cameraextensionProvider.swift; sourceTree = "<group>"; };
 		4D5670CD2845CD7100AB80EF /* ExtensionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionHelper.swift; sourceTree = "<group>"; };
-		4D5670CF28495D3700AB80EF /* Headshot.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Headshot.jpg; path = ../../../Pictures/Headshot.jpg; sourceTree = "<group>"; };
+		4D75598C28D0319C006185EF /* Headshot.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Headshot.jpg; sourceTree = "<group>"; };
 		4D85AD8D284AC51000ACFFF1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.documentation.markup; };
 		4D8A5C54286BF59F0050BB64 /* CMIODeviceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CMIODeviceHelper.swift; sourceTree = "<group>"; };
 		4D9B53F427D15E300041DFF3 /* CameraTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CameraTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -128,7 +128,7 @@
 		4D9B53F627D15E300041DFF3 /* CameraTest */ = {
 			isa = PBXGroup;
 			children = (
-				4D5670CF28495D3700AB80EF /* Headshot.jpg */,
+				4D75598C28D0319C006185EF /* Headshot.jpg */,
 				4D8A5C54286BF59F0050BB64 /* CMIODeviceHelper.swift */,
 				4D9B53F727D15E300041DFF3 /* CameraTestApp.swift */,
 				4D9B53F927D15E300041DFF3 /* ContentView.swift */,
@@ -249,7 +249,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D5670D028495D3700AB80EF /* Headshot.jpg in Resources */,
+				4D75598D28D0319C006185EF /* Headshot.jpg in Resources */,
 				4D9B53FF27D15E310041DFF3 /* Preview Assets.xcassets in Resources */,
 				4D85AD8E284AC51000ACFFF1 /* README.md in Resources */,
 				4D9B53FC27D15E310041DFF3 /* Assets.xcassets in Resources */,
