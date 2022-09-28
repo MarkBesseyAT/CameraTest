@@ -2,10 +2,11 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>CMIOExtension</key>
-	<dict>
-		<key>CMIOExtensionMachServiceName</key>
-		<string>M3KUT44L48.app.mmhmm.hybrid.extension</string>
-	</dict>
+	<key>com.apple.security.app-sandbox</key>
+	<true/>
+	<key>com.apple.security.application-groups</key>
+	<array>
+		<string>$(TeamIdentifierPrefix)app.mmhmm.hybrid</string>
+	</array>
 </dict>
 </plist>

@@ -1,13 +1,21 @@
 //
-//  CameraExtensionConnector.cpp
+//  CameraExtensionConnector.m
 //  CameraTest
 //
-//  Created by Mark Bessey on 7/26/22.
+// Copyright © 2020-2022 mmhmm, inc. All rights reserved.
 //
 
 #include "CameraExtensionConnector.h"
 #import <CoreMedia/CoreMedia.h>
+#import <CoreMediaIO/CoreMediaIO.h>
+#import <Foundation/Foundation.h>
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunguarded-availability-new"
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+#pragma clang diagnostic ignored "-Wsign-compare"
+
+#define EXPORT __attribute__((visibility("default")))
 typedef NSArray<NSNumber*>* NumberArray;
 // ----
 void queueAlteredProc(CMIOStreamID streamID, void* token, void* refCon);
@@ -22,7 +30,9 @@ NSArray<NSNumber*>* getArrayValue(CMIODeviceID id,
 								  CMIOObjectPropertySelector selector);
 NSArray<NSNumber*>* getDeviceIDs(void);
 
-@interface CameraExtensionConnector() {
+@interface CameraExtensionConnector:NSObject {
+    CMIODeviceID _device;
+    CMIOStreamID _stream;
 	CMSimpleQueueRef _queue;
 	CVPixelBufferPoolRef _bufferPool;
 	CMFormatDescriptionRef _videoFormat;
@@ -32,9 +42,10 @@ NSArray<NSNumber*>* getDeviceIDs(void);
 @end
 
 @implementation CameraExtensionConnector
+@synthesize queue=_queue;
 
 - (instancetype) init {
-	return [self initWithCameraNamed:@"mmhmm Camera (new)"];
+	return [self initWithCameraNamed:@"Mmhmm Camera (new)"];
 }
 - (instancetype) initWithCameraNamed:(NSString *)name {
 	if (self = [super init]) {
@@ -42,7 +53,9 @@ NSArray<NSNumber*>* getDeviceIDs(void);
 		_stream = [self getSinkStreamID:_device];
 		int width = 1920;
 		int height = 1080;
-		CMVideoFormatDescriptionCreate(NULL, kCVPixelFormatType_32BGRA, width, height, NULL, &_videoFormat);
+        CMVideoFormatDescriptionCreate(NULL, kCVPixelFormatType_32BGRA, width, height, NULL, &_videoFormat);
+        //ToDo: figure out why I can't create a buffer pool with 24BGR format
+        // CMVideoFormatDescriptionCreate(NULL, kCVPixelFormatType_24BGR, width, height, NULL, &_videoFormat);
 		NSDictionary* pixelBufferAttributes = @{
 			(NSString*)kCVPixelBufferWidthKey: [NSNumber numberWithInt: width],
 			(NSString*)kCVPixelBufferHeightKey: [NSNumber numberWithInt: height],
@@ -58,7 +71,7 @@ NSArray<NSNumber*>* getDeviceIDs(void);
 	return self;
 }
 
-- (CMIODeviceID) getCameraID: (NSString *) name {
+- (CMIODeviceID) getCameraID: (NSString *) wantedName {
 	CMIODeviceID cameraID = 0;
 	NumberArray devices = getDeviceIDs();
 	for (NSNumber* id in devices) {
@@ -66,7 +79,7 @@ NSArray<NSNumber*>* getDeviceIDs(void);
 										kCMIOObjectPropertyName);
 		if (name != NULL) {
 			// check it here
-			if ([name isEqualToString:@"mmhmm Camera (new)"]) {
+			if ([name isEqualToString: wantedName]) {
 				cameraID = id.unsignedIntValue;
 			}
 		}
@@ -95,29 +108,8 @@ NSArray<NSNumber*>* getDeviceIDs(void);
 	return CMIODeviceStartStream(_device, _stream);
 }
 
-- (void) overwriteBuffer:(CVPixelBufferRef)pixelBuffer {
-	CVPixelBufferLockBaseAddress(pixelBuffer, 0);
-	// draw some pixels
-	UInt32 *memory = CVPixelBufferGetBaseAddress(pixelBuffer);
-	// no planar bitmaps, please
-	assert(CVPixelBufferGetPlaneCount(pixelBuffer) == 0);
-	//uint8_t *memory = CVPixelBufferGetBaseAddressOfPlane(pixelBuffer, 0);
-	size_t size = CVPixelBufferGetDataSize(pixelBuffer)/sizeof(UInt32);
-	UInt32 offset = _frameCount;
-	for (int i = 0; i < size; i++) {
-		UInt32 value = ((i+offset)%256);
-		UInt32 pixel = (0xff000000 | value<<16 | value<<8 | value);
-		memory[i] = pixel;
-	}
-	_frameCount++;
-	CVPixelBufferUnlockBaseAddress(pixelBuffer, 0);
-}
-
 - (OSStatus) createPixelBufferIn:(CVPixelBufferRef _Nullable*) pixelBuffer {
 	OSStatus result = CVPixelBufferPoolCreatePixelBufferWithAuxAttributes(NULL, _bufferPool, nil, pixelBuffer);
-	if (result == noErr) {
-		[self overwriteBuffer:*pixelBuffer];
-	}
 	return result;
 }
 
@@ -131,39 +123,13 @@ NSArray<NSNumber*>* getDeviceIDs(void);
 }
 
 - (void) send:(CMSampleBufferRef)sampleBuffer {
-  static BOOL firstError=YES;
-    // retain the buffer, since the CMSimpleQueue doesn't
 	CFRetain(sampleBuffer);
-//    NSLog(@"queuing %p", sampleBuffer);
 	OSStatus result = CMSimpleQueueEnqueue(_queue, sampleBuffer);
 	if (result == kCMSimpleQueueError_QueueIsFull) {
-      if (firstError) {
 		NSLog(@"queue is full.");
-        firstError = NO;
-      }
 	} else if (result != noErr) {
-      if (firstError) {
 		NSLog(@"failed to enqueue, error = %d", result);
-        firstError = NO;
-      }
 	}
-}
-
-- (void) send {
-	OSStatus result;
-	CVPixelBufferRef pixelBuffer;
-	result = [self createPixelBufferIn:&pixelBuffer];
-	if (result != noErr) {
-		NSLog(@"Dang. failed to create pixel buffer");
-		return;
-	}
-	CMSampleBufferRef sampleBuffer;
-	result = [self createSampleBuffer:&sampleBuffer for:pixelBuffer];
-	if (result == noErr) {
-		// creating the sample buffer retains the pixelBuffer
-		CFRelease(pixelBuffer);
-	}
-	[self send:sampleBuffer];
 }
 
 @end
@@ -176,14 +142,17 @@ void queueAlteredProc(CMIOStreamID streamID, void* token, void* refCon) {
 		NSLog(@"Oops, no self pointer.");
 		return;
 	}
-//    NSLog(@"qap: token %p", token);
-    //CMSampleBufferRef buffer = (CMSampleBufferRef)token;
 	int32_t count = CMSimpleQueueGetCount(connector.queue);
 	int32_t capacity = CMSimpleQueueGetCapacity(connector.queue);
 	if (count >= capacity) {
 		NSLog(@"queue stalled");
 		return;
 	}
+    CMSampleBufferRef buffer = (CMSampleBufferRef)token;
+    // Todo: MarkB - I honestly don't know why this ISN'T needed, but I get a crash when it's enabled.
+    // In the Hybrid app, we absolutely *need* this release to avoid leaking memory.
+    // There must be some difference in how these buffers are originally getting allocated, or something.
+    //CFRelease(buffer);
 }
 
 OSStatus stopSinkStream(CMIOStreamID stream) {
@@ -218,7 +187,7 @@ UInt32 getIntValue(CMIODeviceID id,
 	}
 	OSStatus result = CMIOObjectGetPropertyData(id, &address, 0, nil, sizeof(UInt32), &usedSpace, &value);
 	if (result != kCMIOHardwareNoError) {
-		NSLog(@"uh, oh");
+		NSLog(@"Device %d doesn't have int property %d", id, selector);
 		value = 0;
 	}
 	return value;
@@ -239,7 +208,7 @@ void getPointerValue(CMIODeviceID id,
 	}
 	OSStatus result = CMIOObjectGetPropertyData(id, &address, 0, nil, sizeof(CFStringRef), &usedSpace, dest);
 	if (result != kCMIOHardwareNoError) {
-		NSLog(@"uh, oh");
+        NSLog(@"Device %d doesn't have pointer property %d", id, selector);
 		*dest = NULL;
 	}
 }
@@ -278,3 +247,46 @@ NSArray<NSNumber*>* getDeviceIDs() {
 	return getArrayValue(kCMIOObjectSystemObject, kCMIOObjectPropertyOwnedObjects);
 }
 
+#pragma mark C-API
+static CameraExtensionConnector* instance = NULL;
+int camera_extension_open() {
+  if (!instance) {
+    instance = [[CameraExtensionConnector alloc]init];
+  }
+  OSStatus result = [instance startSinkStream];
+  if (result != 0) {
+    NSLog(@"Couldn't start camera, Error: %d", result);
+  }
+  return result;
+}
+
+int camera_extension_write(void*buffer, size_t size) {
+  CVPixelBufferRef pxb;
+  [instance createPixelBufferIn:&pxb];
+  // copy data
+  // ToDo: make this more-efficient
+  assert(size == CVPixelBufferGetDataSize(pxb)*3/4);
+  CVPixelBufferLockBaseAddress(pxb, 0);
+  UInt8* dst = CVPixelBufferGetBaseAddress(pxb);
+  // memcpy(dst, buffer, size);
+  UInt8 *src = (UInt8*) buffer;
+  for (int i=0; i < (int) size; i++) {
+    if(i%3 == 0 && i != 0) {
+      *(dst++) = 0;
+    }
+    *(dst++) = *(src++);
+  }
+  CVPixelBufferUnlockBaseAddress(pxb, 0);
+  CMSampleBufferRef sampleBuffer;
+  [instance createSampleBuffer:&sampleBuffer for:pxb];
+  CFRelease(pxb);
+  [instance send:sampleBuffer];
+  return 0;
+}
+
+int camera_extension_close(void) {
+  instance = nil;
+  return 0;
+}
+
+#pragma clang diagnostic pop

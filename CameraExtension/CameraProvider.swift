@@ -2,7 +2,10 @@
 //  cameraextensionProvider.swift
 //  cameraextension
 //
-//  Created by laurent denoue on 7/1/22.
+//  Copyright © 2022 mmhmm, inc. All rights reserved.
+//  Based on an example by laurent denoue:
+//  https://github.com/ldenoue/cameraextension
+//
 //
 
 import Foundation
@@ -19,12 +22,12 @@ let kWhiteStripeHeight: Int = 10
 
 // MARK: -
 
-class cameraDeviceSource: NSObject, CMIOExtensionDeviceSource {
+class CameraDeviceSource: NSObject, CMIOExtensionDeviceSource {
     
     private(set) var device: CMIOExtensionDevice!
     
-    public var _streamSource: cameraStreamSource!
-    public var _streamSink: cameraStreamSink!
+    public var _streamSource: CameraStreamSource!
+    public var _streamSink: CameraStreamSink!
     private var _streamingCounter: UInt32 = 0
     private var _streamingSinkCounter: UInt32 = 0
     
@@ -78,8 +81,8 @@ class cameraDeviceSource: NSObject, CMIOExtensionDeviceSource {
         let videoStreamFormat = CMIOExtensionStreamFormat.init(formatDescription: _videoDescription, maxFrameDuration: CMTime(value: 1, timescale: Int32(kFrameRate)), minFrameDuration: CMTime(value: 1, timescale: Int32(kFrameRate)), validFrameDurations: nil)
         _bufferAuxAttributes = [kCVPixelBufferPoolAllocationThresholdKey: 5]
         
-        _streamSource = cameraStreamSource(localizedName: "mmhmm.camera.extension.video", streamID: cameraStreamUUID, streamFormat: videoStreamFormat, device: device)
-        _streamSink = cameraStreamSink(localizedName: "mmhmm.camera.extension.video", streamID: sinkStreamUUID, streamFormat: videoStreamFormat, device: device)
+        _streamSource = CameraStreamSource(localizedName: "mmhmm.camera.extension.video", streamID: cameraStreamUUID, streamFormat: videoStreamFormat, device: device)
+        _streamSink = CameraStreamSink(localizedName: "mmhmm.camera.extension.video", streamID: sinkStreamUUID, streamFormat: videoStreamFormat, device: device)
         do {
             try device.addStream(_streamSource.stream)
             try device.addStream(_streamSink.stream)
@@ -245,7 +248,7 @@ class cameraDeviceSource: NSObject, CMIOExtensionDeviceSource {
 
 // MARK: -
 
-class cameraStreamSource: NSObject, CMIOExtensionStreamSource {
+class CameraStreamSource: NSObject, CMIOExtensionStreamSource {
     
     private(set) var stream: CMIOExtensionStream!
     
@@ -309,7 +312,7 @@ class cameraStreamSource: NSObject, CMIOExtensionStreamSource {
         if let state = streamProperties.propertiesDictionary[CMIOExtensionPropertyCustomPropertyData_just] {
             if let newValue = state.value as? String {
                 self.just = newValue
-                if let deviceSource = device.source as? cameraDeviceSource {
+                if let deviceSource = device.source as? CameraDeviceSource {
                     self.just = deviceSource.myStreamingCounter()
                 }
             }
@@ -324,7 +327,7 @@ class cameraStreamSource: NSObject, CMIOExtensionStreamSource {
     
     func startStream() throws {
         
-        guard let deviceSource = device.source as? cameraDeviceSource else {
+        guard let deviceSource = device.source as? CameraDeviceSource else {
             fatalError("Unexpected source type \(String(describing: device.source))")
         }
         self.rust = "1"
@@ -333,7 +336,7 @@ class cameraStreamSource: NSObject, CMIOExtensionStreamSource {
     
     func stopStream() throws {
         
-        guard let deviceSource = device.source as? cameraDeviceSource else {
+        guard let deviceSource = device.source as? CameraDeviceSource else {
             fatalError("Unexpected source type \(String(describing: device.source))")
         }
         self.rust = "0"
@@ -341,7 +344,7 @@ class cameraStreamSource: NSObject, CMIOExtensionStreamSource {
     }
 }
 
-class cameraStreamSink: NSObject, CMIOExtensionStreamSource {
+class CameraStreamSink: NSObject, CMIOExtensionStreamSource {
     
     private(set) var stream: CMIOExtensionStream!
     
@@ -411,7 +414,7 @@ class cameraStreamSink: NSObject, CMIOExtensionStreamSource {
     
     func startStream() throws {
         
-        guard let deviceSource = device.source as? cameraDeviceSource else {
+        guard let deviceSource = device.source as? CameraDeviceSource else {
             fatalError("Unexpected source type \(String(describing: device.source))")
         }
         if let client = client {
@@ -421,7 +424,7 @@ class cameraStreamSink: NSObject, CMIOExtensionStreamSource {
     
     func stopStream() throws {
         
-        guard let deviceSource = device.source as? cameraDeviceSource else {
+        guard let deviceSource = device.source as? CameraDeviceSource else {
             fatalError("Unexpected source type \(String(describing: device.source))")
         }
         deviceSource.stopStreamingSink()
@@ -430,16 +433,16 @@ class cameraStreamSink: NSObject, CMIOExtensionStreamSource {
 
 // MARK: -
 
-class cameraProviderSource: NSObject, CMIOExtensionProviderSource {
+class CameraProviderSource: NSObject, CMIOExtensionProviderSource {
     
     private(set) var provider: CMIOExtensionProvider!
     
-    private var deviceSource: cameraDeviceSource!
+    private var deviceSource: CameraDeviceSource!
 
     init(clientQueue: DispatchQueue?) {
         super.init()
         provider = CMIOExtensionProvider(source: self, clientQueue: clientQueue)
-        deviceSource = cameraDeviceSource(localizedName: cameraName)
+        deviceSource = CameraDeviceSource(localizedName: cameraName)
         
         do {
             try provider.addDevice(deviceSource.device)

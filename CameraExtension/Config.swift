@@ -2,13 +2,13 @@
 //  Config.swift
 //  samplecamera
 //
-//  Created by laurent denoue on 7/2/22.
+//  Copyright © 2022 mmhmm, inc. All rights reserved.
 //
 
 import Foundation
 
 let kFrameRate: Int = 30
-let cameraName = "mmhmm Camera (new)"
+let cameraName = "Mmhmm Camera (new)"
 let fixedCamWidth: Int32 = 1920
 let fixedCamHeight: Int32 = 1080
 let deviceUUID = UUID(uuidString: "54E37095-DA8C-4CE4-A5A3-3E8BA152F7BD")!

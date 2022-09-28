@@ -1,14 +1,14 @@
 //
 //  main.swift
-//  cameraextension
+//  extension
 //
-//  Created by laurent denoue on 7/1/22.
+//  Copyright © 2020 mmhmm, inc. All rights reserved.
 //
 
 import Foundation
 import CoreMediaIO
 
-let providerSource = cameraProviderSource(clientQueue: nil)
+let providerSource = CameraProviderSource(clientQueue: nil)
 CMIOExtensionProvider.startService(provider: providerSource.provider)
 
 CFRunLoopRun()
