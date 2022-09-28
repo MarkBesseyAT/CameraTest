@@ -64,7 +64,7 @@
 /* Begin PBXFileReference section */
 		4D02995E2890F89F00E7E57D /* CameraTest-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CameraTest-Bridging-Header.h"; sourceTree = "<group>"; };
 		4D02995F2890F89F00E7E57D /* CameraExtensionConnector.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CameraExtensionConnector.m; sourceTree = "<group>"; };
-		4D0299602890F89F00E7E57D /* CameraExtensionConnector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CameraExtensionConnector.h; sourceTree = "<group>"; };
+		4D0299602890F89F00E7E57D /* CameraExtensionConnectorAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CameraExtensionConnectorAPI.h; sourceTree = "<group>"; };
 		4D0C47FA27E3F5F0002FFCAA /* CameraPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreview.swift; sourceTree = "<group>"; };
 		4D0C47FC27E3FA3B002FFCAA /* CameraModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraModel.swift; sourceTree = "<group>"; };
 		4D0C47FE27E3FAFC002FFCAA /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
@@ -76,6 +76,7 @@
 		4D75598C28D0319C006185EF /* Headshot.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Headshot.jpg; sourceTree = "<group>"; };
 		4D85AD8D284AC51000ACFFF1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.documentation.markup; };
 		4D8A5C54286BF59F0050BB64 /* CMIODeviceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CMIODeviceHelper.swift; sourceTree = "<group>"; };
+		4D93B6ED28E502E60029B0ED /* CameraExtensionConnector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CameraExtensionConnector.h; sourceTree = "<group>"; };
 		4D9B53F427D15E300041DFF3 /* CameraTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CameraTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D9B53F727D15E300041DFF3 /* CameraTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraTestApp.swift; sourceTree = "<group>"; };
 		4D9B53F927D15E300041DFF3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -140,7 +141,8 @@
 				4D5670CD2845CD7100AB80EF /* ExtensionHelper.swift */,
 				4D9B540027D15E310041DFF3 /* CameraTest.entitlements */,
 				4D02995F2890F89F00E7E57D /* CameraExtensionConnector.m */,
-				4D0299602890F89F00E7E57D /* CameraExtensionConnector.h */,
+				4D93B6ED28E502E60029B0ED /* CameraExtensionConnector.h */,
+				4D0299602890F89F00E7E57D /* CameraExtensionConnectorAPI.h */,
 				4D02995E2890F89F00E7E57D /* CameraTest-Bridging-Header.h */,
 			);
 			path = CameraTest;

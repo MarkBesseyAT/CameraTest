@@ -2,19 +2,26 @@
 //  CameraExtensionConnector.h
 //  CameraTest
 //
-// Copyright © 2020-2022 mmhmm, inc. All rights reserved.
+//  Created by Mark Bessey on 9/28/22.
 //
 
 #ifndef CameraExtensionConnector_h
 #define CameraExtensionConnector_h
-#include <stddef.h>
-#ifdef __cplusplus
-  extern "C" {
-#endif
-    int camera_extension_open();
-    int camera_extension_write(void* buffer, size_t size);
-    int camera_extension_close();
-#ifdef __cplusplus
-  }
-#endif
+#import <Foundation/Foundation.h>
+#import <CoreMediaIO/CMIOHardware.h>
+
+@interface CameraExtensionConnector:NSObject {
+    CMIODeviceID _device;
+    CMIOStreamID _stream;
+  CMSimpleQueueRef _queue;
+  CVPixelBufferPoolRef _bufferPool;
+  CMFormatDescriptionRef _videoFormat;
+  int _frameCount;
+}
+- (instancetype) initWithCameraNamed:(NSString *)name;
+- (OSStatus) startSinkStream;
+- (void) send:(CMSampleBufferRef)sampleBuffer;
+@property(readwrite) CMSimpleQueueRef queue;
+@end
+
 #endif /* CameraExtensionConnector_h */

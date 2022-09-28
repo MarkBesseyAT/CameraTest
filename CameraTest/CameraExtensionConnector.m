@@ -5,7 +5,9 @@
 // Copyright © 2020-2022 mmhmm, inc. All rights reserved.
 //
 
-#include "CameraExtensionConnector.h"
+#import "CameraExtensionConnector.h"
+#import "CameraExtensionConnectorAPI.h"
+
 #import <CoreMedia/CoreMedia.h>
 #import <CoreMediaIO/CoreMediaIO.h>
 #import <Foundation/Foundation.h>
@@ -15,7 +17,6 @@
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
 #pragma clang diagnostic ignored "-Wsign-compare"
 
-#define EXPORT __attribute__((visibility("default")))
 typedef NSArray<NSNumber*>* NumberArray;
 // ----
 void queueAlteredProc(CMIOStreamID streamID, void* token, void* refCon);
@@ -29,17 +30,6 @@ void getPointerValue(CMIODeviceID id,
 NSArray<NSNumber*>* getArrayValue(CMIODeviceID id,
 								  CMIOObjectPropertySelector selector);
 NSArray<NSNumber*>* getDeviceIDs(void);
-
-@interface CameraExtensionConnector:NSObject {
-    CMIODeviceID _device;
-    CMIOStreamID _stream;
-	CMSimpleQueueRef _queue;
-	CVPixelBufferPoolRef _bufferPool;
-	CMFormatDescriptionRef _videoFormat;
-	int _frameCount;
-}
-@property(readwrite) CMSimpleQueueRef queue;
-@end
 
 @implementation CameraExtensionConnector
 @synthesize queue=_queue;
